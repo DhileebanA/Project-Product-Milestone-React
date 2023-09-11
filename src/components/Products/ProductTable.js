@@ -7,12 +7,11 @@ import { faFileArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { CSVLink } from "react-csv";
 import { Link } from "react-router-dom";
 
-// 
+// Table creation
 export function ProductTable(){
     const[tabData,setTabData]=useState([])
     const[item,setItem]=useState(1)
     
-
     useEffect(()=>{
         fetch('https://fakestoreapi.com/products/')
         .then(res=>res.json())
@@ -79,5 +78,5 @@ export function ProductTable(){
             </div>
         </div>
         </>
-    );
+    )
 }

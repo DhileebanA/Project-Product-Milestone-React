@@ -4,11 +4,13 @@ import { useParams } from "react-router-dom";
 export function ProductDisp() {
     const [tabData, setTabData] = useState([])
     var {id}=useParams()
+
     useEffect(()=>{
         fetch('https://fakestoreapi.com/products/'+id)
         .then(res=>res.json())
         .then(data=>setTabData(data))
     },[])
+
     return (
         <>
         <div className="container-fluid bg-dark d-flex justify-content-center">
@@ -30,5 +32,5 @@ export function ProductDisp() {
             </div>
         </div>
         </>
-    );
+    )
 }
