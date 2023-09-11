@@ -7,7 +7,7 @@ import { faFileArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { CSVLink } from "react-csv";
 import { Link } from "react-router-dom";
 
-
+// 
 export function ProductTable(){
     const[tabData,setTabData]=useState([])
     const[item,setItem]=useState(1)
@@ -18,12 +18,18 @@ export function ProductTable(){
         .then(res=>res.json())
         .then(data=>setTabData(data))
     },[])
+
+    var csvdata=tabData.map((value,index)=>(
+        
+        [value.id,value.title,value.description,value.category,value.image,value.rating.rate,value.rating.count]
+    ),[])
+
     return(
         <>  
         <div className="bg-dark pb-5">
             <div className="d-flex justify-content-between mx-5 ">
                 <h2 className="mt-5 text-white">Show Products</h2>
-                <CSVLink data={tabData}><button className="btn btn-success mt-5">Download CSV <FontAwesomeIcon icon={faFileArrowDown} fontSize="1.5em"/></button></CSVLink>
+                <CSVLink data={csvdata}><button className="btn btn-success mt-5">Download CSV <FontAwesomeIcon icon={faFileArrowDown} fontSize="1.5em"/></button></CSVLink>
             </div>
             <div className="container-fluid px-4 mt-5">
                 <table className="table table-striped table-hover table-border">
